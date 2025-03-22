@@ -1,0 +1,265 @@
+@prefix : <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sbm: <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@base <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> .
+
+<http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> rdf:type owl:Ontology ;
+                                                             dc:creator "Atsuko YAMAGUCHI" ,
+                                                                        "Hogyan WU" ,
+                                                                        "Kai LENZ" ,
+                                                                        "Kouji KOZAKI" ,
+                                                                        "Norio KOBAYASHI" ,
+                                                                        "Yasunori YAMAMOTO" ;
+                                                             dc:title "The RDF Metadata Schema vocabulary for SPARQL Builder" ;
+                                                             <http://purl.org/dc/terms/license> "https://creativecommons.org/publicdomain/mark/1.0/" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#classCategory
+sbm:classCategory rdf:type owl:ObjectProperty ;
+                  rdfs:domain sd:Dataset ;
+                  rdfs:range xsd:long ;
+                  rdfs:comment "Class category of the dataset." ;
+                  rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                  rdfs:label "classCategory" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#classRelation
+sbm:classRelation rdf:type owl:ObjectProperty ;
+                  rdfs:domain sd:Dataset ;
+                  rdfs:range sbm:ClassRelation ;
+                  rdfs:comment "Describe an instance of ClassRelaton." ;
+                  rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                  rdfs:label "classRelation" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#crawlEndTime
+sbm:crawlEndTime rdf:type owl:ObjectProperty ;
+                 rdfs:domain sbm:CrawlLog ;
+                 rdfs:range xsd:datetime ;
+                 rdfs:comment "The datetime when the crawling finished." ;
+                 rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                 rdfs:label "crawlEndTime" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#crawlLog
+sbm:crawlLog rdf:type owl:ObjectProperty ;
+             rdfs:domain sd:Dataset ;
+             rdfs:range sbm:CrawlLog ;
+             rdfs:comment "Describe an instance of CrawlLog." ;
+             rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+             rdfs:label "crawlLog" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#crawlStartTime
+sbm:crawlStartTime rdf:type owl:ObjectProperty ;
+                   rdfs:domain sbm:CrawlLog ;
+                   rdfs:range xsd:datetime ;
+                   rdfs:comment "The datetime when the crawling started." ;
+                   rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                   rdfs:label "crawlStartTime" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#datatypes
+sbm:datatypes rdf:type owl:ObjectProperty ;
+              rdfs:domain sd:Dataset ;
+              rdfs:range xsd:long ;
+              rdfs:comment "Number of datatypes of the dataset." ;
+              rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+              rdfs:label "datatypes" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#endpointCategory
+sbm:endpointCategory rdf:type owl:ObjectProperty ;
+                     rdfs:domain sd:Dataset ;
+                     rdfs:range xsd:long ;
+                     rdfs:comment "Endpolont category of the dataset." ;
+                     rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                     rdfs:label "endpolontCategory" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#endpolongAccesses
+sbm:endpolongAccesses rdf:type owl:ObjectProperty ;
+                      rdfs:domain sd:Dataset ;
+                      rdfs:range xsd:long ;
+                      rdfs:comment "Number of access during crawling over the dataset of the endpolong." ;
+                      rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                      rdfs:label "endpolongAccesses" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#metadataGraphURI
+sbm:metadataGraphURI rdf:type owl:ObjectProperty ;
+                     rdfs:domain void:Dataset ,
+                                 sd:Dataset ;
+                     rdfs:range xsd:anyURI ;
+                     rdfs:comment "Specify a graphURI in the SPARQL Endpoint publishing SBM metadata. The graphURI is defined for each clawled SPARQL endpoint and its graph." ;
+                     rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                     rdfs:label "metadataGraphURI" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#objcetClass
+sbm:objcetClass rdf:type owl:ObjectProperty ;
+                rdfs:domain sbm:ClassRelation ;
+                rdfs:range rdfs:Class ;
+                rdfs:comment "The class of an object instance of ClassRelation." ;
+                rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                rdfs:label "objectClass" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#objcetClasses
+sbm:objcetClasses rdf:type owl:ObjectProperty ;
+                  rdfs:domain sd:Dataset ;
+                  rdfs:range xsd:long ;
+                  rdfs:comment "Number of object classes of the dataset." ;
+                  rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                  rdfs:label "objectClasses" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#objcetDatatype
+sbm:objcetDatatype rdf:type owl:ObjectProperty ;
+                   rdfs:domain sbm:ClassRelation ;
+                   rdfs:range rdfs:Datatype ;
+                   rdfs:comment "The datatype of an object literal of ClassRelation." ;
+                   rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                   rdfs:label "objectDatatype" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#objcetDatatypes
+sbm:objcetDatatypes rdf:type owl:ObjectProperty ;
+                    rdfs:domain sd:Dataset ;
+                    rdfs:range xsd:long ;
+                    rdfs:comment "Number of object datatypes of the dataset." ;
+                    rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                    rdfs:label "objectDatatypes" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#propertyCategory
+sbm:propertyCategory rdf:type owl:ObjectProperty ;
+                     rdfs:domain sd:Dataset ;
+                     rdfs:range xsd:long ;
+                     rdfs:comment "Property category of the dataset." ;
+                     rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                     rdfs:label "propertyCategory" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#propertyCategorySubset
+sbm:propertyCategorySubset rdf:type owl:ObjectProperty ;
+                           rdfs:domain sd:Dataset ;
+                           rdfs:range sd:Dataset ;
+                           rdfs:comment "Describe sub-datasets of properties associated with given property category." ;
+                           rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                           rdfs:label "propertyCategorySubset" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#sample
+sbm:sample rdf:type owl:ObjectProperty ;
+           rdfs:domain sbm:ClassRelation ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Description of sample triples of the classRelation." ;
+           rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+           rdfs:label "sample" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#searchableTriples
+sbm:searchableTriples rdf:type owl:ObjectProperty ;
+                      rdfs:domain sd:Dataset ;
+                      rdfs:range xsd:long ;
+                      rdfs:comment "Number of searchable triples of the dataset." ;
+                      rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                      rdfs:label "searchableTriples" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#subjcetClass
+sbm:subjcetClass rdf:type owl:ObjectProperty ;
+                 rdfs:domain sbm:ClassRelation ;
+                 rdfs:range rdfs:Class ;
+                 rdfs:comment "The class of a subject instance of ClassRelation." ;
+                 rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                 rdfs:label "subjectClass" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#subjcetClasses
+sbm:subjcetClasses rdf:type owl:ObjectProperty ;
+                   rdfs:domain sd:Dataset ;
+                   rdfs:range xsd:long ;
+                   rdfs:comment "Number of subject classes of the dataset." ;
+                   rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                   rdfs:label "subjectClasses" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rdfs.org/ns/void#Dataset
+void:Dataset rdf:type owl:Class .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#ClassRelation
+sbm:ClassRelation rdf:type owl:Class ;
+                  rdfs:comment "A Relationship between subject and object classes ." ;
+                  rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+                  rdfs:label "ClassRelation" .
+
+
+###  http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#CrawlLog
+sbm:CrawlLog rdf:type owl:Class ;
+             rdfs:comment "A log of crawling on the dataset." ;
+             rdfs:isDefinedBy <http://www.sparqlbuilder.org/2015/09/rdf-metadata-schema#> ;
+             rdfs:label "CrawlLog" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Class
+rdfs:Class rdf:type owl:Class .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Datatype
+rdfs:Datatype rdf:type owl:Class .
+
+
+###  http://www.w3.org/2001/XMLSchemaanyURI
+xsd:anyURI rdf:type owl:Class .
+
+
+###  http://www.w3.org/2001/XMLSchemadatetime
+xsd:datetime rdf:type owl:Class .
+
+
+###  http://www.w3.org/2001/XMLSchemalong
+xsd:long rdf:type owl:Class .
+
+
+###  http://www.w3.org/2001/XMLSchemastring
+xsd:string rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sparql-service-description#Dataset
+sd:Dataset rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
